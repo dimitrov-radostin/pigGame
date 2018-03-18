@@ -1,0 +1,82 @@
+body {
+  background-image: url("../images/back.jpg");
+  /* background: 100%; */
+  /* background-repeat: initial; */
+  padding: 0;
+}
+* {
+  box-sizing: border-box;
+}
+main {
+  position: relative;
+  display: inline-block;
+  background: white;
+  width: 70%;
+  margin: 5% 15%;
+}
+section {
+  text-align: center;
+}
+.active {
+  background: #f7f7f7;
+}
+#left,
+#right {
+  width: 50%;
+  padding: 2em;
+}
+
+#right > p:first-child,
+#left > p:first-child {
+  margin-top: 3em;
+  font-size: 1.8em;
+}
+.score {
+  font-size: 4em;
+  margin-top: 0;
+  margin-bottom: 1.7em;
+  color: tomato;
+}
+#left {
+  float: left;
+}
+#right {
+  float: right;
+}
+#center {
+  width: 30%;
+  position: absolute;
+  left: 35%;
+}
+#center > div {
+  margin: 1.8em;
+}
+/* #center > div:first-child {
+  margin-bottom: 10em;
+} */
+#center > div:last-child {
+  width: 160px;
+  margin: auto;
+  margin-bottom: 2em;
+  padding: 1em;
+  border: 1px solid black;
+}
+#center > img {
+  display: block;
+  width: 30%;
+  margin: 1em auto;
+  box-shadow: 1px 1px 15px 5px rgba(30, 46, 59, 0.767);
+}
+#center > img:first-of-type {
+  margin-top: 4em;
+}
+#center > img:last-of-type {
+    margin-bottom: 4em;
+  }
+.current {
+  width: 30%;
+  /* padding: 5%; */
+  margin: 3em 35%;
+  overflow: hidden;
+  background: #eb4d4c;
+}
