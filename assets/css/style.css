@@ -18,8 +18,23 @@ section {
   text-align: center;
 }
 .active {
-  background: #f7f7f7;
+  background: #d5eecc;
 }
+.point {
+  visibility: hidden;
+}
+section.active span.point {
+  visibility: visible;
+  width: 0.6em;
+  height: 0.6em;
+  background: red;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+/* .active > p {
+  font-size: 1.1em;
+} */
 #left,
 #right {
   width: 50%;
@@ -48,8 +63,12 @@ section {
   position: absolute;
   left: 35%;
 }
+
 #center > div {
-  margin: 1.8em;
+  padding: 0.6em;
+  background: rgba(202, 171, 32, 0.521);
+  margin: 0.8em auto;
+  width: 180px;
 }
 /* #center > div:first-child {
   margin-bottom: 10em;
@@ -71,12 +90,21 @@ section {
   margin-top: 4em;
 }
 #center > img:last-of-type {
-    margin-bottom: 4em;
-  }
+  margin-bottom: 4em;
+}
 .current {
   width: 30%;
   /* padding: 5%; */
   margin: 3em 35%;
   overflow: hidden;
   background: #eb4d4c;
+}
+
+#dice1,
+#dice2 {
+  visibility: hidden;
+}
+#roll,
+#hold {
+  cursor: pointer;
 }

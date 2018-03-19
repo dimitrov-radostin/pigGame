@@ -1,0 +1,59 @@
+function throwDice() {
+  return [Math.ceil(Math.random() * 5), Math.ceil(Math.random() * 5)];
+}
+console.log(throwDice());
+
+function Player(name) {
+  this.name = name;
+  this.opponent = null;
+  this.totalScore = 0;
+  this.currentRoundScore = 0;
+  this.currentThrow = [];
+  this.isOnTurn = false;
+}
+Player.prototype.rollDice = function() {
+  if (!this.isOnTurn) {
+    throw new Error("Player" + this.name + " is not marked to be on turn");
+  }
+  this.currentThrow = throwDice();
+  console.log(this.name + " hvarli " + this.currentThrow);
+  if (this.currentThrow.indexOf(1) > -1) {
+    console.log("toz hvarli edno- vsicko prekluchva");
+    this.isOnTurn = false;
+    this.opponent.isOnTurn = true;
+    this.currentRoundScore = 0;
+    return;
+  }
+  this.currentRoundScore += this.currentThrow[0] + this.currentThrow[1];
+};
+Player.prototype.hold = function() {
+  this.totalScore = this.currentRoundScore;
+  this.currentRoundScore = 0;
+  this.isOnTurn = false;
+  this.opponent.isOnTurn = true;
+};
+var p1 = new Player("pesho");
+var p2 = new Player("gosho");
+p1.opponent = p2;
+p2.opponent = p1;
+p1.isOnTurn = true;
+while (p1.totalScore < 100 && p2.totalScore < 100) {
+  p1.rollDice();
+  while (p1.isOnTurn) {
+    if (Math.random() < 0.1) {
+      p1.rollDice();
+    } else {
+      p1.hold();
+    }
+  }
+  console.log(p1.name + " svarshi hoda i sq ima " + p1.totalScore + " tochki");
+  p2.rollDice();
+  while (p2.isOnTurn) {
+    if (Math.random() < 0.4) {
+      p2.rollDice();
+    } else {
+      p2.hold();
+    }
+  }
+  console.log(p2.name + " svarshi hoda i sq ima " + p2.totalScore + " tochki");
+}
